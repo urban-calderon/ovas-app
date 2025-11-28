@@ -1,0 +1,34 @@
+<footer class="bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-20">
+  <div class="container mx-auto flex justify-between items-center max-w-5xl">
+
+    <button
+      (click)="lessonService.prevPage()"
+      [disabled]="lessonService.isFirstPage"
+      class="flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all duration-200
+             bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400
+             disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+      </svg>
+      <span class="hidden sm:inline">Anterior</span>
+    </button>
+
+    <!-- Indicador de progreso -->
+    <div class="h-1.5 w-24 md:w-48 bg-gray-100 rounded-full overflow-hidden hidden sm:block">
+       <div class="h-full bg-blue-500 transition-all duration-500"
+            [style.width.%]="(currentStep / 3) * 100"></div>
+    </div>
+
+    <button
+      (click)="lessonService.nextPage()"
+      [disabled]="lessonService.isLastPage"
+      class="flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-white shadow-sm transition-all duration-200
+             bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-400">
+      <span class="hidden sm:inline">Siguiente</span>
+      <span class="sm:hidden">Sig.</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</footer>

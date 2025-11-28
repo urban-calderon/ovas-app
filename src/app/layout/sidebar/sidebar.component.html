@@ -1,0 +1,29 @@
+<aside class="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col h-full">
+  <div class="p-5 border-b border-gray-100 flex justify-center">
+    <span class="font-bold text-gray-400 uppercase text-xs tracking-widest">
+      Menú
+    </span>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto py-4">
+    <ul class="flex flex-col space-y-1">
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.path"
+           routerLinkActive="bg-blue-50 text-blue-700 border-r-4 border-blue-600 font-medium"
+           class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-all cursor-pointer">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+<!-- Menú móvil -->
+<div class="md:hidden bg-gray-100 p-2 flex overflow-x-auto whitespace-nowrap border-b border-gray-200">
+   <a *ngFor="let item of menuItems"
+      [routerLink]="item.path"
+      routerLinkActive="bg-blue-600 text-white shadow-md"
+      class="px-4 py-2 mr-2 rounded-full text-sm text-gray-600 bg-white border border-gray-200 transition-colors">
+      {{ item.label }}
+   </a>
+</div>
