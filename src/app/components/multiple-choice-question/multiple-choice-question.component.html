@@ -1,0 +1,70 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+  <div class="bg-gray-50 p-6 border-b border-gray-100">
+    <h3 class="text-lg md:text-xl font-semibold text-gray-800 leading-snug">
+      {{ question }}
+    </h3>
+  </div>
+
+  <div class="p-6 space-y-4">
+    <!-- Opciones -->
+    <div *ngFor="let option of options; let i = index">
+      <label
+        class="group flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 relative overflow-hidden"
+        [ngClass]="{
+          'border-blue-500 bg-blue-50': selectedOption === i && !isAnswered,
+          'border-gray-200 hover:border-gray-300 hover:bg-gray-50': selectedOption !== i && !isAnswered,
+          'border-green-500 bg-green-50': isAnswered && i === correctIndex,
+          'border-red-500 bg-red-50': isAnswered && selectedOption === i && i !== correctIndex,
+          'opacity-60': isAnswered && i !== correctIndex && selectedOption !== i
+        }">
+
+        <div class="flex items-center justify-center w-6 h-6 rounded-full border-2 mr-4 transition-colors"
+             [ngClass]="{
+               'border-blue-500': selectedOption === i,
+               'border-gray-300': selectedOption !== i,
+               'bg-blue-500 border-blue-500': selectedOption === i
+             }">
+           <div class="w-2.5 h-2.5 bg-white rounded-full" *ngIf="selectedOption === i"></div>
+        </div>
+
+        <input
+          type="radio"
+          name="question"
+          [value]="i"
+          (change)="selectedOption = i"
+          [disabled]="isAnswered"
+          class="hidden">
+
+        <span class="text-gray-700 font-medium group-hover:text-gray-900">{{ option }}</span>
+
+        <!-- Icono de resultado -->
+        <div *ngIf="isAnswered" class="absolute right-4 top-1/2 transform -translate-y-1/2">
+           <span *ngIf="i === correctIndex" class="text-green-600 text-xl">✓</span>
+           <span *ngIf="selectedOption === i && i !== correctIndex" class="text-red-500 text-xl">✕</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Botón de acción -->
+    <div class="mt-8">
+      <button
+        *ngIf="!isAnswered"
+        (click)="submitAnswer()"
+        [disabled]="selectedOption === null"
+        class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 active:transform active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none">
+        Verificar Respuesta
+      </button>
+
+      <!-- Feedback Mensaje -->
+      <div *ngIf="feedbackMessage"
+           class="p-4 rounded-lg text-center font-bold animate-pulse"
+           [ngClass]="isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+        {{ feedbackMessage }}
+      </div>
+
+      <button *ngIf="isAnswered" (click)="reset()" class="mt-4 text-sm text-gray-500 hover:text-blue-600 underline text-center w-full">
+        Intentar de nuevo
+      </button>
+    </div>
+  </div>
+</div>
