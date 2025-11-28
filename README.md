@@ -88,6 +88,7 @@ src/app/
 ---
 
 ## 📸 Previsualización de la Aplicación
+Link para previsualizar la aplicación: https://ovas-app.vercel.app/introduccion
 
 ### Vista en escritorio
 ![Vista escritorio](public/desktop-preview.png)
