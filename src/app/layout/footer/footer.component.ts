@@ -14,7 +14,6 @@ export class FooterComponent {
   constructor(public lessonService: LessonService) {}
 
   ngOnInit() {
-    // Suscribirse para actualizar la barra de progreso (opcional)
     this.lessonService.currentIndex$.subscribe(index => {
       this.currentStep = index;
     });
