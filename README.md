@@ -1,59 +1,90 @@
-# OvasApp
+# OVAs - Prueba técnica
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+Este proyecto es una aplicación web desarrollada en **Angular** que simula un **Objeto Virtual de Aprendizaje (OVAs)**.  
+La aplicación guía al usuario a través de una lección interactiva sobre **“Analítica de Datos en Educación”**, incluyendo:
 
-## Development server
+- Navegación secuencial entre secciones.
+- Componentes reutilizables.
+- Una actividad de evaluación tipo selección múltiple.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🛠️ Tecnologías Utilizadas
+
+- **Framework:** Angular 16+
+- **Lenguaje:** TypeScript
+- **Estilos:** Tailwind CSS (diseño responsivo y utilitario)
+- **Enrutamiento:** Angular Router
+
+---
+
+## 📋 Requisitos Previos
+
+Para ejecutar este proyecto, necesitas tener instalado:
+
+- **Node.js:** v16.x o superior  
+- **Angular CLI:** v16.x o superior  
+  ```bash
+  npm install -g @angular/cli
+  ```
+
+---
+
+## 🚀 Instrucciones de Instalación y Ejecución
+
+Sigue estos pasos para visualizar el proyecto en tu entorno local:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone <URL_DE_TU_REPOSITORIO>
+   cd <NOMBRE_DE_LA_CARPETA>
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar el servidor de desarrollo:**
+   ```bash
+   ng serve
+   ```
+
+4. **Abrir en el navegador:**
+   Navega a [http://localhost:4200/](http://localhost:4200/). La aplicación se recargará automáticamente si cambias algún archivo fuente.
+
+---
+
+## 💡 Decisiones Técnicas
+
+A continuación, describo las decisiones clave tomadas durante el desarrollo para cumplir con los requerimientos de escalabilidad y mantenimiento:
+
+### 1. Arquitectura de Navegación (Routing + Service)
+- Se optó por utilizar **Angular Router** en lugar de un renderizado condicional simple (`*ngIf`).
+  - **¿Por qué?** Permite que cada sección de la lección tenga su propia URL única, lo cual es estándar en la web y facilita compartir enlaces específicos.
+- **LessonService:** Se implementó un servicio dedicado para centralizar la lógica de "Siguiente/Anterior". Este servicio escucha los eventos del router y calcula automáticamente si los botones de navegación deben estar habilitados o deshabilitados, desacoplando esta lógica de los componentes visuales.
+
+### 2. Diseño con Tailwind CSS
+- Se eligió **Tailwind CSS** para la maquetación.
+  - **¿Por qué?** Permite un desarrollo rápido de interfaces responsivas sin necesidad de escribir archivos CSS personalizados extensos. Facilita el mantenimiento de la coherencia visual (colores, espaciados) y asegura que la aplicación se adapte fluidamente a dispositivos móviles (Mobile First).
+
+### 3. Componentes Reutilizables
+- **MultipleChoiceQuestionComponent:** El componente de la actividad se diseñó para ser agnóstico al contenido. Recibe la pregunta, las opciones y la respuesta correcta mediante `@Input()`, lo que permite reutilizarlo para cualquier número de preguntas futuras sin modificar su código interno.
+- **Header Dinámico:** El componente Header recibe el título de la lección como propiedad, permitiendo su reutilización en diferentes contextos o lecciones.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```plaintext
+src/app/
+├── services/       # Lógica de negocio (LessonService)
+├── layout/              # Componentes estructurales (Header, Sidebar, Footer)
+├── pages/               # Vistas principales (Introducción, Objetivos, etc.)
+├── components/     # Componentes UI reutilizables (Pregunta Selección Múltiple)
+└── app-routing.module.ts # Configuración de rutas
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Desarrollado por **Urbano Calderón**.
