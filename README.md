@@ -87,4 +87,14 @@ src/app/
 
 ---
 
+## 📸 Previsualización de la Aplicación
+
+### Vista en escritorio
+![Vista escritorio](public/desktop-preview.png)
+
+### Vista en Dispositivos Móviles
+![Vista móvil](public/mobile-preview.png)
+
+---
+
 Desarrollado por **Urbano Calderón**.
