@@ -1,4 +1,10 @@
-<h1 class="text-3xl font-bold underline text-center text-indigo-400">
-  Hello world!
-</h1>
-<router-outlet />
+<div class="flex flex-col h-screen bg-gray-50">
+  <app-header [lessonTitle]="'Analítica de Datos en Educación'"></app-header>
+  <div class="flex flex-col md:flex-row flex-1 overflow-hidden relative">
+    <app-sidebar class="w-full md:w-auto"></app-sidebar>
+    <main class="flex-1 overflow-y-auto p-6 md:p-10 bg-white relative w-full">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  <app-footer></app-footer>
+</div>
